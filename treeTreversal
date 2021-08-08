@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node {
+  int data;
+  struct Node* left;
+  struct Node* right;
+
+  Node(int val)
+  {
+    data = val;
+    left = NULL;
+    right = NULL;
+  }
+};
+void print_preorder(struct Node* temp)
+{
+  if(temp!= NULL)
+  {
+    cout<<temp->data<<"  " ;
+    print_preorder(temp->left);
+    print_preorder(temp->right);
+  }
+}
+
+void print_inorder(struct Node* temp)
+{
+  if(temp!= NULL)
+  {
+    print_inorder(temp->left);
+    cout<<temp->data<<"  ";
+    
+    print_inorder(temp->right);
+  }
+}
+
+void print_postorder(struct Node* temp)
+{
+  if(temp!= NULL)
+  {
+    
+    print_postorder(temp->left);
+    print_postorder(temp->right);
+    cout<<temp->data<<"  " ;
+  }
+}
+
+
+int main() {
+  // creating a tree from struct
+
+  struct Node* root =  new Node(1);
+
+root -> left = new Node(2);
+root -> right = new Node(3);
+root -> left->left = new Node(4);
+root ->left-> right = new Node(5);
+root -> right->left = new Node(6);
+root -> right->right = new Node(7);
+
+cout<<"Preorder"<<endl;
+print_preorder(root);
+cout<<"Inorder"<<endl;
+print_inorder(root);
+cout<<"PostOrder"<<endl;
+print_postorder(root);
+
+
+
+}
