@@ -1,0 +1,63 @@
+// build tree from inorder and postorder
+
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Node {
+  int data;
+  struct Node* left;
+  struct Node* right;
+
+  Node(int val)
+  {
+    data = val;
+    left = NULL;
+    right = NULL;
+  }
+};
+
+struct Node* buildTree(vector<int> preorder, vector<int> inorder, int start, int end)
+{
+  static int ind = 0;
+  if(start>end)
+  {
+    return NULL;
+  }
+  int curr = preorder[ind];
+  ind++;
+  struct Node* node = new Node(curr);
+  if(start ==end) return node;
+
+auto pos1 = find(inorder.begin() + start,inorder.begin() + end,curr);
+
+int pos = pos1 - inorder.begin();
+// cout<<curr<<" "<<pos<<endl;
+
+
+  node->left = buildTree(preorder,inorder,start, pos-1);
+  node->right = buildTree(preorder, inorder, pos+1, end);
+
+  return node;
+}
+void print_inorder(struct Node* temp)
+{
+  if(temp!= NULL)
+  {
+    print_inorder(temp->left);
+    cout<<temp->data<<"  ";
+    
+    print_inorder(temp->right);
+  }
+}
+int main() {
+  // creating a tree from struct
+
+  vector<int> preorder{ 1,2, 3, 4 ,5};
+  vector<int> inorder{4,2,1,5,3};
+int start = 0;
+int end = sizeof(inorder)/sizeof(inorder[0]);
+
+  struct Node* root = buildTree(preorder,inorder,0, 4);
+
+   print_inorder(root);
+}
