@@ -27,14 +27,14 @@ void print_levelorder(Node* temp)
   {
     struct Node* front = qt.front();
       qt.pop();
-    if(front != NULL)
+    if(front != NULL) // if the queue does not see NULL
     {
       
       cout<<front->data<<endl;
       if(front->left) qt.push(front->left);
       if(front->right) qt.push(front->right);
     }
-    else if(!qt.empty())
+    else if(!qt.empty())  // if NULL and qt is not empty
     {
         qt.push(NULL);
     }
