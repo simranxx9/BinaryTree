@@ -16,8 +16,8 @@ int max_diameter(Node * temp)
   int left_height = max_height(temp -> left);
   int right_height =max_height(temp->right);
 
-  int ldiameter = 1+ max_diameter(temp->left);
-  int rdiameter = 1+ max_diameter(temp->right);
+  int ldiameter = max_diameter(temp->left);
+  int rdiameter = max_diameter(temp->right);
 
   return max(left_height+right_height+1, max(ldiameter,rdiameter));
 }
