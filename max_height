@@ -1,0 +1,11 @@
+int max_height(Node* temp)
+{
+  
+    if(temp == NULL)
+    {
+      return 0;
+    }
+    return max(1+max_height(temp->left),1+max_height(temp->right));
+  
+
+}
