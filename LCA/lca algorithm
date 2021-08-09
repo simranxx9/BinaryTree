@@ -1,0 +1,30 @@
+/**
+ * class Tree {
+ *     public:
+ *         int val;
+ *         Tree *left;
+ *         Tree *right;
+ * };
+ */
+ Tree* solve1(Tree* root, int a ,int b)
+ {
+     if(root == NULL) return NULL;
+
+
+    if(root->val == b || root->val == a) return root;
+
+    Tree * lca1 = solve1(root->left, a, b);
+    Tree * lca2 = solve1(root->right, a , b);
+
+    if(lca1!= NULL && lca2!= NULL) return root;
+
+    if(lca1!=NULL) return lca1;
+    else return lca2;
+ }
+int solve(Tree* root, int a, int b) {
+
+    Tree* temp = solve1(root, a, b);
+    return temp->val;
+
+    
+}
