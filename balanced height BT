@@ -1,0 +1,33 @@
+/**
+ * class Tree {
+ *     public:
+ *         int val;
+ *         Tree *left;
+ *         Tree *right;
+ * };
+ */
+int calc_height(Tree* temp)
+{
+    if(temp == NULL)
+    {
+        return 0;
+    }
+    return max(1+calc_height(temp->left), 1+calc_height(temp->right)); 
+}
+
+bool solve(Tree* root) {
+    
+    if(root == NULL) return true;
+
+if(solve(root->left) == false) return false;
+if(solve(root->right) == false) return false;
+
+    int lh = calc_height(root->left);
+    int rh = calc_height(root -> right);
+
+    int diff_height = abs(rh-lh);
+    if(diff_height <= 1) return true;
+    else return false;
+
+
+}
