@@ -1,0 +1,16 @@
+void sum_replacement(Node * temp)
+{
+    if(temp == NULL) return;
+
+    sum_replacement(temp->left);
+    sum_replacement(temp->right);
+
+    if(temp->left)
+    {
+      temp->data += temp->left->data;
+    }
+    if(temp->right)
+    {
+      temp->data += temp->right->data;
+    }
+}
