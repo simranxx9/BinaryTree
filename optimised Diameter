@@ -1,0 +1,16 @@
+int max_diameter(Node * temp, int *height)
+{
+  if(temp == NULL) 
+  {
+    *height = 0;
+    return 0;
+  }
+int lh = 0, rh = 0;
+int ldiameter = max_diameter(temp->left, &lh);
+int rdiameter = max_diameter(temp->right, &rh);
+int currDiameter = lh + rh +1;
+
+*height = max(lh,rh) + 1;
+
+  return max(currDiameter, max(ldiameter,rdiameter));
+}
