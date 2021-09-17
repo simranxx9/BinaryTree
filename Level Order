@@ -1,5 +1,5 @@
 // build tree from inorder and postorder
-
+// deepanshu interview sir gave l == 0 then pass l=1 and opposite
 #include <bits/stdc++.h>
 using namespace std;
 
